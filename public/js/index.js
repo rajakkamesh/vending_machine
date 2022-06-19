@@ -40,6 +40,17 @@ function selectProduct(product_id){
     render_selected_products();
 }
 
+function removeProduct(product_id){
+    let temp_products = [];
+    selected_products.map(function(product){
+        if(product.id != product_id){
+            temp_products.push(product);
+        }
+    });
+    selected_products = temp_products;
+    render_selected_products();
+}
+
 function render_selected_products(){
     $('#selected_products_list').html('');
     for(let i = 0; i < selected_products.length; i++){
@@ -48,7 +59,14 @@ function render_selected_products(){
             <li class="list-group-item d-flex justify-content-between align-items-center" style="padding: 4px 4px;font-size: 90%;">
                 <span style="width:80%;float: left;">${selected_products[i].name}</span>
                 <span style="width:18%;float: right;margin-right: 4px;" class="badge badge-success badge-pill">$${selected_products[i].price}</span>
-                <span style="float: right;cursor: pointer;width: 20px;height: 20px;padding: 4px 0px;" class="badge badge-danger badge-pill" style="color: white;">✕</span>
+                <span onclick="removeProduct(${selected_products[i].id})" style="float: right;cursor: pointer;width: 20px;height: 20px;padding: 4px 0px;" class="badge badge-danger badge-pill" style="color: white;">✕</span>
+            </li>
+        `);
+    }
+    if(selected_products.length == 0){
+        $('#selected_products_list').append(`
+            <li class="list-group-item" id="no_product_selected_message">
+                <h6 style="margin: 40px 20px;" class="text-center">No product selected, please select products from products list.</h6>
             </li>
         `);
     }
