@@ -4,12 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
+    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000",
+    "pretest": "cross-env NODE_ENV=test npm run db:reset",
+    "db:create:test": "cross-env NODE_ENV=test npx sequelize-cli db:create"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "keywords": [],
-  "author": "",
+  "author": "Kamesh Rajak",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
@@ -18,6 +26,9 @@
     "sequelize": "^6.21.0"
   },
   "devDependencies": {
-    "sequelize-cli": "^6.4.1"
+    "cross-env": "^7.0.3",
+    "jest": "^28.1.1",
+    "sequelize-cli": "^6.4.1",
+    "supertest": "^6.2.3"
   }
 }
