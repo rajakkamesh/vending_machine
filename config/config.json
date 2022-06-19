@@ -1,0 +1,27 @@
+{
+  "development": {
+    "database": "vending_machine_database",
+    "username": "postgres",
+    "password": "postgres",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "database": "vending_machine_database_test",
+    "username": "postgres",
+    "password": "postgres",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "dialect": "postgres",
+    "username": "postgres",
+    "password": "postgres",
+    "host": "localhost",
+    "dialectOptions": {
+      "ssl": {
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}
