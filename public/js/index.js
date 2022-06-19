@@ -33,7 +33,6 @@ function load_products() {
 }
 
 function selectProduct(product_id){
-
     let selected_product = all_products.find(function(product){
         return product.id == product_id;
     });
