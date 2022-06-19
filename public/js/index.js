@@ -17,7 +17,7 @@ function load_products() {
                     <div class="col-3" style="margin-bottom: 20px;">
                         <div id="product_${product.id}" class="product tumbnail thumbnail-3" style="border: 1px solid #8080803d;border-radius: 10px;"><a href="#"><img src="${product.image}" style="width: 100%;border-top-left-radius: 10px;border-top-right-radius: 10px;"></a>
                         <div class="caption">
-                            <span class="price sale">${product.price}$</span>
+                            <span class="price sale">$${product.price}</span>
                             <p style="margin-bottom: 0px;height: 38px;line-height: 100%;">
                                 <a style="font-size: 80%;">${product.name}</a>
                             </p>
