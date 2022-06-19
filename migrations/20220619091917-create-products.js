@@ -32,7 +32,10 @@ module.exports = {
       price: {
         type: Sequelize.FLOAT
       },
-      created_at: {
+      createdAt: {
+        type: Sequelize.DATE
+      },
+      updatedAt: {
         type: Sequelize.DATE
       }
     });

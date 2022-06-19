@@ -9,7 +9,8 @@ module.exports = {
       image: 'http://placehold.jp/3d4070/ffffff/150x150.png?text=Placeholder%20Product%20Image',
       stock: 20,
       price: '4.30',
-      created_at: new Date()
+      createdAt: new Date(),
+      updatedAt: new Date()
     },
     {
       sku: 'CLIBAR',
@@ -20,7 +21,8 @@ module.exports = {
       image: 'http://placehold.jp/3d4070/ffffff/150x150.png?text=Placeholder%20Product%20Image',
       stock: 16,
       price: '6.20',
-      created_at: new Date()
+      createdAt: new Date(),
+      updatedAt: new Date()
     }], {});
   },  down: (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete('Products', null, {});

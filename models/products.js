@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.TEXT,
     stock: DataTypes.INTEGER,
     price: DataTypes.FLOAT,
-    created_at: DataTypes.DATE
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE
   }, {
     sequelize,
     modelName: 'Products',
