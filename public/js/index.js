@@ -1,6 +1,7 @@
 "use strict";
 let all_products = [];
 let selected_products = [];
+let total_amount_to_pay = 0;
 $(document).ready(function() {
     load_products();
 });
@@ -22,7 +23,7 @@ function load_products() {
                             <p style="margin-bottom: 0px;height: 38px;line-height: 100%;">
                                 <a style="font-size: 80%;">${product.name}</a>
                             </p>
-                            <button onclick="selectProduct(${product.id})" style="height: 24px;padding: 1px 4px;margin-top: 9px;" class="btn btn-outline-info btn-sm btn-block">Select</button>
+                            <button id="product_button_${product.id}" onclick="selectProduct(${product.id}, this)" style="height: 24px;padding: 1px 4px;margin-top: 9px;" class="btn btn-outline-info btn-sm btn-block">Select</button>
                         </div>
                         </div>
                     </div>    
@@ -32,12 +33,17 @@ function load_products() {
     });
 }
 
-function selectProduct(product_id){
+function selectProduct(product_id, element){
     let selected_product = all_products.find(function(product){
         return product.id == product_id;
     });
+
+    total_amount_to_pay = total_amount_to_pay + selected_product.price;
+    $('#amount_to_pay').html('$'+total_amount_to_pay);
+
     selected_products.push(selected_product);
     render_selected_products();
+    $(element).prop( "disabled", true );
 }
 
 function removeProduct(product_id){
@@ -48,6 +54,20 @@ function removeProduct(product_id){
         }
     });
     selected_products = temp_products;
+
+    // update pay amount
+    let removed_product = all_products.find(function(product){
+        return product.id == product_id;
+    });
+
+    total_amount_to_pay = total_amount_to_pay - removed_product.price;
+    $('#amount_to_pay').html('$'+total_amount_to_pay);
+    // update pay amount
+    // enable select button
+    $('#product_button_'+removed_product.id).prop( "disabled", false );
+    $('#product_'+removed_product.id).css('box-shadow','unset');
+    // enable select button
+
     render_selected_products();
 }
 
@@ -69,5 +89,9 @@ function render_selected_products(){
                 <h6 style="margin: 40px 20px;" class="text-center">No product selected, please select products from products list.</h6>
             </li>
         `);
+        $('.selected_products_pay').css('display','none');
+    }
+    else{
+        $('.selected_products_pay').css('display','block');
     }
 }

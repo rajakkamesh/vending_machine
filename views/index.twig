@@ -25,11 +25,19 @@
                </div>
                <div class="col-4 border-all" style="padding: 16px 16px;">
                   <ul class="list-group" id="selected_products_list" style="padding: 0px 0px;height: 400px;overflow-y: auto;">
-                    <!-- no product selected message -->
                     <li class="list-group-item" id="no_product_selected_message">
                         <h6 style="margin: 40px 20px;" class="text-center">No product selected, please select products from products list.</h6>
                     </li>
                   </ul>
+
+                  <ul class="list-group selected_products_pay" id="selected_products_pay" style="display: none;">
+                        <li class="list-group-item d-flex justify-content-between align-items-center" style="padding: 4px 4px;font-size: 90%;">
+                           <span style="width:80%;float: left;">Total Amount: </span>
+                           <span style="width:18%;float: right;margin-right: 4px;" class="badge badge-success badge-pill" id="amount_to_pay"></span>                           
+                        </li>
+                   </ul>
+                   <button style="margin-top: 16px;display: none;" class="btn btn-danger btn-sm btn-block selected_products_pay">Pay Amount</button>
+
                </div>
             </div>
          </div>
