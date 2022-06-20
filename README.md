@@ -1,4 +1,4 @@
-# Project Title
+# Vending Machine
 
 A nice project with a nice description
 

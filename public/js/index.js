@@ -144,3 +144,7 @@ function payAmount(){
         
       });
 }
+
+function cancelOrder(){
+    window.location.reload(1);
+}
