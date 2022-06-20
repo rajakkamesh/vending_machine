@@ -3,7 +3,7 @@ let all_products = [];
 let selected_products = [];
 let total_amount_to_pay = 0;
 $(document).ready(function() {
-    load_products();
+    load_products();    
 });
 function load_products() {
     $.ajax({
@@ -94,4 +94,53 @@ function render_selected_products(){
     else{
         $('.selected_products_pay').css('display','block');
     }
+}
+
+function payAmount(){
+    swal("TOTAL AMOUNT: $"+total_amount_to_pay, {
+        content: "input",
+      })
+      .then((value) => {
+        let entered_amount = parseFloat(value);
+        let amount_to_pay = parseFloat(total_amount_to_pay);
+        if(entered_amount && amount_to_pay){
+            if(parseFloat(value) < parseFloat(total_amount_to_pay)){
+                swal({
+                    title: "Insufficient amount!",
+                    text: "Please enter a valid amount!",
+                    icon: "error",
+                    button: "Okay!",
+                  });
+            }
+            else if(parseFloat(value) > parseFloat(total_amount_to_pay)){
+                swal({
+                    title: "Paid successfully!",
+                    text: "Returned change: $"+(parseFloat(value) - parseFloat(total_amount_to_pay)).toFixed(2),
+                    icon: "success",
+                });
+                setTimeout(function(){
+                    window.location.reload(1);
+                 }, 2000);
+            }
+            else{
+                swal({
+                    title: "Paid successfully!",
+                    text: "No change!",
+                    icon: "success",
+                });
+                setTimeout(function(){
+                    window.location.reload(1);
+                 }, 2000);
+            }
+        }
+        else{
+            swal({
+                title: "Invalid amount!",
+                text: "Please enter a valid amount!",
+                icon: "error",
+                button: "Okay!",
+              });
+        }
+        
+      });
 }
