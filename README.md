@@ -82,3 +82,10 @@ Test cases were created using supertest and jest, to run the tests invoke follow
 To reset database
 
     $ npm run db:reset
+## Available APIS
+
+  - POST  "/products"
+  - GET  "/products"
+  - GET  "/products/:id"
+  - PUT  "/products/:id"
+  - DELETE  "/products/:id"
