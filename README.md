@@ -1,6 +1,11 @@
 # Vending Machine
 
-A nice project with a nice description
+- Express (^4.18.1)
+- sequelize (^6.21.0)
+- sequelize-cli (^6.4.1)
+- Twig (^1.15.4)
+- Jest (^28.1.1)
+- Supertest (^6.2.3)
 
 ---
 ## Requirements
@@ -26,41 +31,54 @@ Also, be sure to have `git` available in your PATH, `npm` might need it (You can
 If the installation was successful, you should be able to run the following command.
 
     $ node --version
-    v8.11.3
+    v16.15.1
 
     $ npm --version
-    6.1.0
+    8.11.0
 
 If you need to update `npm`, you can make it using `npm`! Cool right? After running the following command, just open again the command line and be happy.
 
     $ npm install npm -g
 
 ###
-### Yarn installation
-  After installing node, this project will need yarn too, so just run the following command.
-
-      $ npm install -g yarn
-
----
 
 ## Install
 
-    $ git clone https://github.com/YOUR_USERNAME/PROJECT_TITLE
-    $ cd PROJECT_TITLE
-    $ yarn install
+    $ https://github.com/rajakkamesh/vending_machine.git
+    $ cd vending_machine
+    $ npm install
 
 ## Configure app
 
-Open `a/nice/path/to/a.file` then edit it with your settings. You will need:
+Configure database settings in config/config.json file and update following values:
 
-- A setting;
-- Another setting;
-- One more setting;
+- database;
+- username;
+- password;
+- host;
 
 ## Running the project
+Create database using following command:
 
-    $ yarn start
+    $ npx sequelize-cli db:create
 
-## Simple build for production
+Run database migrations to create tables in the database using following command:;
 
-    $ yarn build
+    $ npx sequelize-cli db:migrate
+
+Now we’ll run seed files to add our products items to the database:
+
+    $ npx sequelize-cli db:seed:all
+
+Now to run application use following command:
+
+    $ npm start
+
+## Run Tests
+Test cases were created using supertest and jest, to run the tests invoke following command
+
+    $ npm test
+
+To reset database
+
+    $ npm run db:reset
